@@ -17,6 +17,7 @@ public class player_controller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+              print("what");
     }
 
     // Update is called once per frame
@@ -28,15 +29,16 @@ public class player_controller : MonoBehaviour
     private void FixedUpdate() {
         if(movementInput != Vector2.zero){
         rb.MovePosition(rb.position+movementInput*moveSpeed * Time.fixedDeltaTime);
-        anim.SetBool("isidle", false);
+        anim.SetBool("isidle", false);   //   print("not idle");
             if(movementInput.x >= 0){
-                anim.SetBool("isright", true);
+                anim.SetBool("isright", true);  //    print("right");
                 }
-                else {anim.SetBool("isright", false);
+                else {anim.SetBool("isright", false);    //   print("left");
                 }
             }
-        else{
-        anim.SetBool("isidle", true);
+        else {
+        anim.SetBool("isidle", true); 
+         // print("idle");
         }
     }
 

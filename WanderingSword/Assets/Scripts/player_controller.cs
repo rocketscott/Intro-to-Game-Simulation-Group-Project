@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 
 public class player_controller : MonoBehaviour
 {
     Vector2 movementInput;
     Rigidbody2D rb;
     Animator anim;
-    
+    public int health;
+    public Slider slider;
     public float moveSpeed;
-
+    public Vector2 startPos;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,8 @@ public class player_controller : MonoBehaviour
         anim.SetBool("isidle", true); 
          // print("idle");
         }
+        if (transform.position.y < -60){death();}
+
     }
 
 
@@ -48,5 +53,18 @@ public class player_controller : MonoBehaviour
         
     }
 
+    public void damage(){
+        
+        health --;
+        slider.value = health;
+         if (health<0){death();}
+    }
 
-}
+    private void death(){
+
+          transform.position = startPos;
+          health = 100;
+            slider.value = health;
+
+}}
+

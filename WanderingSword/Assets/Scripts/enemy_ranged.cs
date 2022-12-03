@@ -7,8 +7,14 @@ public class enemy_ranged : MonoBehaviour
     public Transform target;
     public float siteDistance;
     public float attackSpeed;
+    public GameObject pro;
+    bool inRange;
+    public Vector3 throwPosOffset;
+    private float nextTime;
+
     Animator anim;
     SpriteRenderer spriteR;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +30,13 @@ public class enemy_ranged : MonoBehaviour
             if (transform.position.x > target.position.x)
             {
                 spriteR.flipX = false;
+        
             } else { spriteR.flipX = true; }
 
 
             anim.SetBool("isIdle", false);
-
-            Instanciate 
+            inRange = true;
+       
        
             
 
@@ -37,9 +44,21 @@ public class enemy_ranged : MonoBehaviour
         }
         else
         {
+           
             if (Vector2.Distance(transform.position, target.position) > siteDistance+ 2)
-                anim.SetBool("isIdle", true); 
+               { anim.SetBool("isIdle", true); 
+                    inRange = false;
+               
+               }
         }
+        if (inRange)
+         {
+            if (Time.time > nextTime)
+           { Instantiate(pro,transform.position-throwPosOffset, Quaternion.identity);
+            nextTime = Time.time + attackSpeed;
+            }
+         }
+
     }
     
 }

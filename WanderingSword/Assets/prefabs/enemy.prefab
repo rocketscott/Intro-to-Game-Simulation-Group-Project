@@ -159,4 +159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8247996564690529611, guid: 6feef37b7ea51aa41b4490672a7cb026, type: 3}
   siteDistance: 10
-  attackSpeed: 5
+  attackSpeed: 0.4
+  pro: {fileID: 687423640882395648, guid: fca6f4c44d7f1f54eb4dc5794f5bd5fd, type: 3}
+  throwPosOffset: {x: 0, y: 0.7, z: 0}
